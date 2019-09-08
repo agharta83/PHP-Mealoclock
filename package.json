@@ -1,0 +1,26 @@
+{
+    "name": "mealoclock",
+    "version": "1.0.0",
+    "description": "Site communautaire en rapport avec l'alimentation",
+    "main": "index.js",
+    "directories": {
+        "doc": "docs"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/agharta83/PHP-Mealoclock.git"
+    },
+    "author": "Galaxy/Audrey",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/agharta83/PHP-Mealoclock/issues"
+    },
+    "homepage": "https://github.com/agharta83/PHP-Mealoclock#readme",
+    "dependencies": {
+        "bootstrap": "4.3.1",
+        "jquery": "3.4.1"
+    }
+}

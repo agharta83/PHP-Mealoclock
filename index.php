@@ -1,9 +1,10 @@
 <?php
+// Chargement des fichiers de façon dynamique
+require(__DIR__ . '/vendor/autoload.php');
 
 // FrontController
-$app = new Application();
+$app = new MealOclock\Application();
 
-// Liste de "require"
 // Liste de routes
 $app->initRoutes();
 
