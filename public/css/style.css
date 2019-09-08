@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Miriam+Libre:400,700');
+
+body {
+    background-color: #FAFAFA;
+    font-family: 'Miriam Libre';
+  }
+  
+/* MENUS */
+.title {
+  background: linear-gradient(to right, #A61B0F, #F2BB13);
+}
+
+body > header > div > a {
+  color: black;
+}
+  
+.menu {
+ border-bottom: 1px solid #CCC;
+ color: #A6A6A6;
+ 
+}
+
+.menu .search-form input {
+  border: none;
+  outline: none;
+}
+
+.menu .search-form input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(166, 27, 15, .25);
+}
+
+.btn {
+  border: none;
+  color: #A6A6A6;
+}
+
+.btn:hover {
+  color: #A61B0F;
+  box-shadow: 0 0 0 0.2rem rgba(166, 27, 15, .25);
+}
+
+.btn:focus {
+  color: #A61B0F;
+  box-shadow: 0 0 0 0.2rem rgba(166, 27, 15, .25);
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #A61B0F;
+  font-weight: bold;
+}
+
+#navbarToggler > ul.navbar-nav.justify-content-between > li > a {
+  color: #A6A6A6;
+}
+
+#navbarToggler > ul.navbar-nav.justify-content-between > li > a:hover {
+  color: #A61B0F;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* CONTENU */
+.jumbotron {
+  background-color: #F2F2F2;
+  border-radius : 10px;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid #e3e3e3;
+  padding: .4em;
+  font-size: .8em;
+  text-align: center;
+}
