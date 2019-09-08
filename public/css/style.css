@@ -66,6 +66,37 @@ body > header > div > a {
   border-radius : 10px;
 }
 
+.box {
+  background-color: #eaeaea;
+  padding: 2em;
+  margin-bottom: 1em;
+}
+
+.box img {
+  border: 1px solid #CCC;
+}
+
+area h3 {
+  font-size: 1.5em;
+}
+
+area h3::after {
+  content: ' ';
+  display: block;
+  height: .2em;
+  background: linear-gradient(to right, #A61B0F, #F2BB13 )
+}
+
+area ul {
+  margin: 2em 0 1em 2em;
+  font-size: .8em;
+  list-style-type: initial;
+}
+
+area p {
+  font-size: .9em;
+}
+
 /* FOOTER */
 footer {
   border-top: 1px solid #e3e3e3;
