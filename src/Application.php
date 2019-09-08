@@ -23,7 +23,7 @@ class Application {
         //$this->router->map('GET', '/communities/[a:slug]', ['CommunityController', 'read'], 'community_read');
 
         // Evènements
-        //$this->router->map('GET', '/events', ['EventController', 'list'], 'event_list');
+        $this->router->map('GET', '/events', ['EventController', 'list'], 'event_list');
         //$this->router->map('GET', '/events/[i:id]', ['EventController', 'read'], 'event_read');
         //$this->router->map('GET', '/events/create', ['EventController', 'create'], 'event_create');
         //$this->router->map('GET', '/[admin|profile:domain]events/[i:id]/update', ['EventController', 'update'], 'event_update');
@@ -64,9 +64,9 @@ class Application {
             $controllerName = '\MealOclock\Controllers\\' . $data[0];
             $methodName = $data[1];
             // On instancie le controller
-            $controller = new $controllerName();
+            $controller = new $controllerName( $this->router );
             // On exécute la méthode
-            $controller->$methodName(  );
+            $controller->$methodName( $match['params'] );
         }
     }
 }

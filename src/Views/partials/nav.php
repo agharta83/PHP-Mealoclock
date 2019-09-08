@@ -1,5 +1,5 @@
 <div class="title text-center p-3 col-12">
-            <a class="" href="#">
+            <a href="<?=$router->generate('home')?>">
                 <img src="<?=$basePath?>/public/images/title.svg" alt="Mealoclock">
             </a>
         </div>
@@ -18,8 +18,8 @@
                 </form>
 
                 <ul class="navbar-nav justify-content-between">
-                    <li class="nav-item px-5"><a href="#">Lorem</a></li>
-                    <li class="nav-item px-5"><a href="#">Lorem</a></li>
+                    <li class="nav-item px-5"><a href="<?=$router->generate('home')?>">Communautés</a></li>
+                    <li class="nav-item px-5"><a href="<?=$router->generate('event_list')?>">Evènements</a></li>
                     <li class="nav-item px-5"><a href="#">Lorem</a></li>
                     <li class="nav-item px-5"><a href="#">Lorem</a></li>
                 </ul>
