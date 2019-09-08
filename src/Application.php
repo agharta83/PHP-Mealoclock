@@ -17,6 +17,7 @@ class Application {
         // MainController
         $this->router->map('GET', '/', ['MainController', 'home'], 'home');
         $this->router->map('GET', '/cgu', ['MainController', 'cgu'], 'cgu');
+        $this->router->map('GET', '/pages/mentions', ['mainController', 'mentions'], 'mentions');
 
         // Communautés
         //$this->router->map('GET', '/communities/[a:slug]', ['CommunityController', 'read'], 'community_read');

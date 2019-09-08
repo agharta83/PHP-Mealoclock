@@ -1,4 +1,4 @@
-<?php $this->layout( 'layout' ); ?>
+<?php $this->layout( 'layout', ['title' => $title] ) ?>
 
 <!-- Partie intermédiaire -->
 <div class="jumbotron jumbotron-fluid py-2">
@@ -11,40 +11,7 @@
 
 <!-- Liste des communautés -->
 <div class="container-fluid">
-        <div class="row box">
-            <div class="col-12 col-md-3">
-                <img src="public/images/communities/vegan.jpg" alt="" class="img-fluid">
-            </div>
-            <div class="col-12 col-md-6 box-content">
-                <h2>Vegan</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div class="col-12 col-md-3 area">
-                <h3>La recette</h3>
-                <ul>
-                    <li>lorem</li>
-                    <li>lorem</li>
-                    <li>lorem</li>
-                </ul>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
-            </div>
-        </div>
-        <div class="row box">
-            <div class="col-12 col-md-3">
-                <img src="public/images/communities/vegan.jpg" alt="" class="img-fluid">
-            </div>
-            <div class="col-12 col-md-6 box-content">
-                <h2>Vegan</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div class="col-12 col-md-3 area">
-                <h3>La recette</h3>
-                <ul>
-                    <li>lorem</li>
-                    <li>lorem</li>
-                    <li>lorem</li>
-                </ul>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
-            </div>
-        </div>
-    </div>
+    <?php for ($i=0; $i<5; $i++): ?>
+        <?php $this->insert( 'partials/community', [ 'cpt' => $i ]); ?>
+    <?php endfor; ?>
+</div>
