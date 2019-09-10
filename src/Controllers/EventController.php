@@ -35,7 +35,8 @@ class EventController extends CoreController {
             $event->save();
 
             // L'événement est correctement créé, on redirige l'utilisateur sur la page de l'évènement
-            header('Location: ' . $this->router->generate( 'event_read', [ 'id' => $event->getId() ] ));
+            //header('Location: ' . $this->router->generate( 'event_read', [ 'id' => $event->getId() ] ));
+            $this->redirect('event_read', ['id' => $event->getId()]);
         } else {
             // Aucune information dans $_POST, on affiche le template
             echo $this->templates->render ('event/create');

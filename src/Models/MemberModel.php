@@ -36,8 +36,79 @@ class MemberModel {
             }
         }
 
+        // On vérifie la double saisie du mot de passe
+        if($data['password'] !== $data['password_confirm']) {
+            $errors[] = "Confirmation du mot de passe incorrecte";
+        }
+
+        // On vérifie le format de l'email
+        if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "Votre adresse mail n'est pas au bon format";
+        }
+
         return $errors;
     }
+
+    // Inscription d'un membre
+    public static function signup($data) {
+        // On crée un objet vierge
+        $member = new self();
+
+        // On renseigne les informations
+        $member->setEmail($data['email']);
+        $member->setPassword($data['password']);
+        $member->setFirstname($data['firstname']);
+        $member->setLastname($data['lastname']);
+        $member->setAddress($data['address']);
+        $member->setDescription($data['description']);
+
+        // On enregistre le nouveau compte
+        $member->save();
+
+        return $member;
+    }
+
+    // Crée un nouveau membre ou le met
+    // à jour si il existe déjà
+    public function save() {
+        // On crée la requête SQL
+        $sql = "
+            REPLACE INTO members (
+                id,
+                email,
+                password,
+                firstname,
+                lastname,
+                address,
+                description
+            )
+            VALUES (
+                :id,
+                :email,
+                :password,
+                :firstname,
+                :lastname,
+                :address,
+                :description
+            )";
+        // On récupère la connexion à la BDD
+        $conn = \MealOclock\Database::getDb();
+        // On exécute la requête
+        $stmt = $conn->prepare( $sql );
+        $stmt->bindValue( ':id', $this->id );
+        $stmt->bindValue( ':email', $this->email );
+        $stmt->bindValue( ':password', $this->password );
+        $stmt->bindValue( ':firstname', $this->firstname );
+        $stmt->bindValue( ':lastname', $this->lastname );
+        $stmt->bindValue( ':address', $this->address );
+        $stmt->bindValue( ':description', $this->description );
+        $stmt->execute();
+        // On affiche les erreurs pour debug
+        // var_dump( $conn->errorInfo() );exit();
+        // On récupère l'ID qui vient d'être généré par MySQL
+        $this->id = $conn->lastInsertId();
+    }
+
 
 
 

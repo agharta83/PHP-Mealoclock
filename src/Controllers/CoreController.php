@@ -19,4 +19,10 @@ class CoreController {
             'router' => $this->router
         ]);
     }
+
+    // Permet de faire une redirection
+    public function redirect ($routeName, $infos = []) {
+        header('Location: ' . $this->router->generate($routeName, $infos));
+        exit();
+    }
 }
