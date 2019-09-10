@@ -109,7 +109,38 @@ class MemberModel {
         $this->id = $conn->lastInsertId();
     }
 
+    // Retourne l'utilisateur associé à une adresse mail
+    public static function findByEmail($email) {
+        // On construit la requete SQL
+        $sql = 'SELECT * FROM members WHERE email LIKE :email';
+        // On récupére la connexion à la BDD
+        $conn = \MealOclock\Database::getDb();
+        // On execute la requête
+        $stmt = $conn->prepare( $sql );
+        $stmt->bindValue(':email', $email, \PDO::PARAM_STR);
+        $stmt->execute();
+        // On retourne le résultat
+        return $stmt->fetchObject( self::class );
+    }
 
+    // Inscrit les informations de l'utilisateur en session
+    public static function login($member) {
+        $_SESSION['user'] = [
+            'id' => $member->getId(),
+            'email' => $member->getEmail(),
+            'firstname' => $member->getFirstname(),
+            'photo' => $member->getPhoto()
+        ];
+    }
+
+    // Retourne les informations de l'utilisateur connecté
+    public static function getUser() {
+        if(!empty($_SESSION['user'])) {
+            return $_SESSION['user'];
+        }
+
+        return false;
+    }
 
 
     /**

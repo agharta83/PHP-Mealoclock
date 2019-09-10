@@ -41,7 +41,7 @@ class Application {
 
         // Connexion / inscription
         $this->router->map('GET|POST', '/signup', ['MemberController', 'signup'], 'signup');
-        $this->router->map('GET', '/login', ['MemberController', 'login'], 'login');
+        $this->router->map('GET|POST', '/login', ['MemberController', 'login'], 'login');
         $this->router->map('GET', '/logout', ['MemberController', 'logout'], 'logout');
         // $this->router->map('GET', '/forgot_password', ['MemberController', ''], '');
         // $this->router->map('GET', '/update_password', ['MemberController', ''], '');

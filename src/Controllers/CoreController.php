@@ -16,7 +16,8 @@ class CoreController {
         // Ajout de données globales grâce à la méthode addData() de Plates
         $this->templates->addData([
             'basePath' => $_SERVER['BASE_URI'],
-            'router' => $this->router
+            'router' => $this->router,
+            'user' => \MealOclock\Models\MemberModel::getUser()
         ]);
     }
 

@@ -23,19 +23,31 @@
                     <li class="nav-item px-5"><a href="#">Lorem</a></li>
                     <li class="nav-item px-5"><a href="#">Lorem</a></li>
                 </ul>
-                    
+
                 <ul  class="navbar-nav ml-auto">
-                    <li class="login nav-item">
-                        <a href="#" class="nav-link"><i class="fas fa-sign-in-alt"></i>
-                            Connexion
-                        </a>
-                    </li>
-                    <li class="signup nav-item">
-                        <a href="<?=$router->generate('signup')?>" class="nav-link">
-                            <i class="fas fa-edit"></i>
-                            Inscription
-                        </a>
-                    </li>
+                    <?php if($user): ?>
+                        <!-- Je suis connecté -->
+                        <li class="login nav-item">
+                            <a href="<?=$router->generate('logout')?>" class="nav-link">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Déconnexion
+                            </a>
+                        </li>
+                    <?php else: ?>
+                        <!-- Je suis déconnecté -->
+                        <li class="login nav-item">
+                            <a href="<?=$router->generate('login')?>" class="nav-link">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Connexion
+                            </a>
+                        </li>
+                        <li class="signup nav-item">
+                            <a href="<?=$router->generate('signup')?>" class="nav-link">
+                                <i class="fas fa-edit"></i>
+                                Inscription
+                            </a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
                         
             </div>
