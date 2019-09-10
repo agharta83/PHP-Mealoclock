@@ -15,8 +15,6 @@ class EventController extends CoreController {
         $eventId = $params['id'];
         // On récupére les données de l'événement à partir de la BDD
         $event = \MealOclock\Models\EventModel::find( $eventId );
-        $event->setName('trololo');
-        $event->save();
         // On affiche le template
         echo $this->templates->render( 'event/read', ['event' =>$event] );
     }

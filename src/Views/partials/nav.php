@@ -31,7 +31,8 @@
                         </a>
                     </li>
                     <li class="signup nav-item">
-                        <a href="#" class="nav-link"><i class="fas fa-edit"></i>
+                        <a href="<?=$router->generate('signup')?>" class="nav-link">
+                            <i class="fas fa-edit"></i>
                             Inscription
                         </a>
                     </li>

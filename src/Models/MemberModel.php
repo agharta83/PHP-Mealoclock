@@ -13,6 +13,32 @@ class MemberModel {
     private $description;
     private $is_admin;
 
+    // Vérification des données de création de compte, liste les erreurs détectées
+    public static function checkData ($data) {
+        // Va contenir la liste des erreurs
+        $errors = [];
+
+        // On vérifie tous les champs obligatoires
+        // Liste des champs obligatoires
+        $mandatoryFields = [
+            'email' => "Veuillez saisir une adresse mail",
+            'password' => "Veuillez renseigner un mot de passe",
+            'password_confirm' => "Vous avez oublié de confirmer le mot de passe",
+            'firstname' => "Veuillez saisir un prénom",
+            'lastname' => "Veuillez saisir un nom",
+        ];
+
+        foreach ($mandatoryFields as $fieldName => $msg) {
+            // On vérifie tous les champs obligatoires
+            if( empty($data[ $fieldName ])) {
+                // Erreur, le champ est vide !
+                $errors[] = $msg;
+            }
+        }
+
+        return $errors;
+    }
+
 
 
     /**

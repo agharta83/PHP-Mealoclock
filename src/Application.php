@@ -38,10 +38,11 @@ class Application {
         // $this->router->map('GET', '/admin/members/update/status', ['AdminController', ''], '');
         // $this->router->map('GET', '/admin/members/[i:id]/delete', ['AdminController', ''], '');
         // $this->router->map('GET', '/admin/members/update/role', ['AdminController', ''], '');
+
         // Connexion / inscription
-        // $this->router->map('GET', '/signup', ['MemberController', ''], '');
-        // $this->router->map('GET', '/login', ['MemberController', ''], '');
-        // $this->router->map('GET', '/logout', ['MemberController', ''], '');
+        $this->router->map('GET|POST', '/signup', ['MemberController', 'signup'], 'signup');
+        $this->router->map('GET', '/login', ['MemberController', 'login'], 'login');
+        $this->router->map('GET', '/logout', ['MemberController', 'logout'], 'logout');
         // $this->router->map('GET', '/forgot_password', ['MemberController', ''], '');
         // $this->router->map('GET', '/update_password', ['MemberController', ''], '');
         // Compte utilisateur
