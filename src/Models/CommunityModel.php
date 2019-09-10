@@ -8,7 +8,18 @@ class CommunityModel {
     private $description;
     private $creator_id;
 
-    
+    // Retourne la liste de toute les communautés
+    public static function findAll() {
+        // On construit la requête SQL
+        $sql = 'SELECT * FROM communities';
+        // On récupère la connexion à la BDD
+        $conn = \MealOclock\Database::getDb();
+        // On exécute la requête SQL
+        $stmt = $conn->query( $sql );
+        // On retourne les résultats
+        $result = $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
+        return $result;
+    }
 
     /**
      * Get the value of id

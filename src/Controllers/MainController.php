@@ -3,11 +3,11 @@ namespace MealOclock\Controllers;
 
 class MainController extends CoreController {
     public function home() {
-
-        $headTitle = 'Le super titre !';
-
+        // On récupére la liste des communautés
+        $list = \MealOclock\Models\CommunityModel::findAll();
+        
         // Render a template
-        echo $this->templates->render( 'main/home', [ 'title' => $headTitle ] );
+        echo $this->templates->render( 'main/home', [ 'communities' => $list ] );
         
     }
 

@@ -2,7 +2,7 @@
 <html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title><?=($title??'MealOclock')?></title>
+    <title><?=( $title ?? 'MealOclock' )?></title>
     <link rel="stylesheet" href="<?=$basePath?>/public/css/reset.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css">

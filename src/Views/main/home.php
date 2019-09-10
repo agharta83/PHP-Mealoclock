@@ -1,4 +1,4 @@
-<?php $this->layout( 'layout', ['title' => $title] ) ?>
+<?php $this->layout( 'layout' ) ?>
 
 <!-- Partie intermédiaire -->
 <div class="jumbotron jumbotron-fluid py-2">
@@ -11,7 +11,7 @@
 
 <!-- Liste des communautés -->
 <div class="container-fluid">
-    <?php for ($i=0; $i<5; $i++): ?>
-        <?php $this->insert( 'partials/community', [ 'cpt' => $i ]); ?>
-    <?php endfor; ?>
+    <?php foreach ($communities as $community) : ?>
+        <?php $this->insert( 'partials/community', [ 'community' => $community ]) ?>
+<?php endforeach; ?>
 </div>

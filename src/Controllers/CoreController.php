@@ -4,7 +4,7 @@ namespace MealOclock\Controllers;
 class CoreController {
 
     public function __construct($router) {
-        // Test connexion Database
+        // Test connexion BDD
         $connexion = \MealOclock\Database::getDb();
         
         // Instance de la librairie Plates pour gérer les templates
