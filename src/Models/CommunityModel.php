@@ -27,16 +27,17 @@ class CommunityModel extends CoreModel {
 
     // Retourne une communauté à partir de son "slug"
     public static function findBySlug( $slug ) {
-        // On créé la requete SQL
+        // On crée la requête SQL
         $sql = 'SELECT * FROM communities WHERE slug = :slug';
-        // On récupére la connexion à la BDD
+        // On récupère la connexion à la BDD
         $conn = \MealOclock\Database::getDb();
-        // On execute la requete
-        $stmt = $conn->prepare($sql);
-        $stmt->bindValue( ':slug', $slug, \PDO::PARAM_STR);
+        // On exécute la requête
+        $stmt = $conn->prepare( $sql );
+        $stmt->bindValue( ':slug', $slug, \PDO::PARAM_STR );
         $stmt->execute();
-        // On retourne le resultat
-        return $stmt->fetchObjet( self::class );
+
+        // On retourne le résultat
+        return $stmt->fetchObject( self::class );
     }
 
     /**

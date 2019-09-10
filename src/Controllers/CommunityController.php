@@ -5,7 +5,7 @@ class CommunityController extends CoreController {
     
     public function read($params) {
         // On récupére l'information qui nous permet de savoir quelle est la communauté à afficher 
-        // var_dump($_params);
+        //var_dump($params); die();
         $slug = $params['slug'];
 
         // On fait une requete pour récupérer les informations de la communauté

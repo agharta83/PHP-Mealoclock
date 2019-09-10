@@ -17,4 +17,18 @@ class CoreModel {
         // On retourne les résultats
         return $stmt->fetchAll(\PDO::FETCH_CLASS, static::class);
     }
+
+    // Retourne un seul enregistrement à partir de ID
+    public static function find($id) {
+        // On construit la requête SQL
+        $sql = 'SELECT * FROM '.static::$tableName.' WHERE id = :id';
+        // On récupère la connexion à la BDD
+        $conn = \MealOclock\Database::getDb();
+        // On exécute la requête
+        $stmt = $conn->prepare( $sql );
+        $stmt->bindValue( ':id', $id, \PDO::PARAM_INT );
+        $stmt->execute();
+        // On retourne les résultats
+        return $stmt->fetchObject( static::class );
+    }
 }

@@ -13,6 +13,45 @@ class EventModel extends CoreModel {
     private $creator_id;
     private $community_id;
 
+    // Crée un nouvel évènement ou le met à jour si il existe déjà
+    public static function save() {
+        // On crée la requête SQL
+        $sql = "
+            REPLACE INTO events (
+                id,
+                name,
+                event_date,
+                address,
+                event_limit,
+                creator_id,
+                community_id
+            ) VALUES (
+                :id,
+                :name,
+                :event_date,
+                :address,
+                :event_limit,
+                :creator_id,
+                :community_id
+        )";
+
+        // On récupére le connexion à la BDD
+        $conn = \MealOclock\Database::getDb();
+        // On execute la requete
+        $stmt = $conn->prepare( $sql );
+        $stmt->bindValue( ':name', $this->name );
+        $stmt->bindValue( ':event_date', $this->event_date );
+        $stmt->bindValue( ':address', $this->address );
+        $stmt->bindValue( ':event_limit', $this->event_limit );
+        $stmt->bindValue( ':creator_id', $this->creator_id );
+        $stmt->bindValue( ':community_id', $this->community_id );
+        $stmt->bindValue( ':id', $this->id );
+        $stmt->execute();
+
+        // On récupére l'ID qui vient d'être généré par MySQL
+        $this->id = $conn->lastInsertId();
+    }
+
     /* // Retourne la liste compléte des événements
     public static function findAll() {
         // On construit la requete SQL
@@ -25,19 +64,20 @@ class EventModel extends CoreModel {
         return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
     } */
 
-    // Retourne un seul événement à partir de son ID
+    /* // Retourne un seul événement à partir de son ID
     public static function find( $id ) {
-        // On construit la requ$ete SQL
+        // On construit la requête SQL
         $sql = 'SELECT * FROM events WHERE id = :id';
-        // On récupére la connexion à la BDD
+        // On récupère la connexion à la BDD
         $conn = \MealOclock\Database::getDb();
-        // On execute la requete
-        $stmt = $conn->query($sql);
-        $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
+        // On exécute la requête
+        $stmt = $conn->prepare( $sql );
+        $stmt->bindValue( ':id', $id, \PDO::PARAM_INT );
         $stmt->execute();
-        // On récupére le résultat
+        
+        // On récupère les résultats
         return $stmt->fetchObject( self::class );
-    }
+    } */
 
 
     /**
