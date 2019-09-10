@@ -4,6 +4,7 @@ namespace MealOclock\Controllers;
 
 class MemberController extends CoreController {
     
+    // Création de compte
     public function signup() {
 
         $errors = [];
@@ -31,4 +32,9 @@ class MemberController extends CoreController {
             'fields' => $_POST
         ]);
     }
-}
+
+    // Connexion
+    public function login() {
+        echo $this->templates->render('member/login');
+    }
+} 
