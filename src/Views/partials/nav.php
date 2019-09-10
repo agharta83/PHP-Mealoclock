@@ -20,13 +20,19 @@
                 <ul class="navbar-nav justify-content-between">
                     <li class="nav-item px-5"><a href="<?=$router->generate('home')?>">Communautés</a></li>
                     <li class="nav-item px-5"><a href="<?=$router->generate('event_list')?>">Evènements</a></li>
-                    <li class="nav-item px-5"><a href="#">Lorem</a></li>
+                    <li class="nav-item px-5"><a href="<?=$router->generate('member_list')?>">Membres</a></li>
                     <li class="nav-item px-5"><a href="#">Lorem</a></li>
                 </ul>
 
                 <ul  class="navbar-nav ml-auto">
                     <?php if($user): ?>
                         <!-- Je suis connecté -->
+                        <li class="login nav-item">
+                            <a href="<?=$router->generate('profile')?>" class="nav-link">
+                                
+                                Mon profil
+                            </a>
+                        </li>
                         <li class="login nav-item">
                             <a href="<?=$router->generate('logout')?>" class="nav-link">
                                 <i class="fas fa-sign-in-alt"></i>

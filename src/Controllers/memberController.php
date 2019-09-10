@@ -68,4 +68,42 @@ class MemberController extends CoreController {
             'fields' => $_POST
         ]);
     }
+
+    // Affiche la liste des membres
+    public function list() {
+        // On récupére la liste des membres
+        $list = \MealOclock\Models\MemberModel::findAll();
+        // On affiche le template
+        echo $this->templates->render('member/list', ['members' => $list]);
+    }
+
+    // Affiche la page de profil
+    public function me() {
+        // On verifie que l'on est bien connecté
+        $user = \MealOclock\Models\MemberModel::getUser();
+
+        if(!$user) {
+            // On n'est pas connecté, on redirige
+            $this->redirect('home');
+        }
+
+        // On récupére toutes les informations de la BDD pour cet utilisateur
+        $data = \MealOclock\Models\MemberModel::find($user['id']);
+
+        // On affiche le template de la page
+        echo $this->templates->render('member/me', ['member' => $data]);
+    }
+
+    // Détruit la session et déconnecte l'utilisateur
+    public function logout() {
+        // On vide la session
+        unset($_SESSION['user']);
+        $_SESSION = [];
+
+        // On détruit la session
+        session_destroy();
+
+        // On redirige l'utilisateur
+        $this->redirect('home');
+    }
 } 

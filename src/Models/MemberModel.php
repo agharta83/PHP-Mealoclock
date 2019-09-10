@@ -1,7 +1,9 @@
 <?php
 namespace MealOclock\Models;
 
-class MemberModel {
+class MemberModel extends CoreModel {
+
+    protected static $tableName = 'members';
     
     private $id;
     private $email;
@@ -142,7 +144,11 @@ class MemberModel {
         return false;
     }
 
-
+    // Retourne le prénom et le nom formatés
+    public function getName() {
+        return ucfirst($this->firstname) . ' ' . strtoupper($this->lastname);
+    }
+    
     /**
      * Get the value of id
      */ 

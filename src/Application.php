@@ -28,6 +28,9 @@ class Application {
         $this->router->map('GET|POST', '/events/create', ['EventController', 'create'], 'event_create');
         //$this->router->map('GET', '/[admin|profile:domain]events/[i:id]/update', ['EventController', 'update'], 'event_update');
 
+        // Membres
+        $this->router->map('GET', '/members', ['MemberController', 'list'], 'member_list');
+
         // Administration
         // $this->router->map('GET', '/admin/communities', ['AdminController', ''], '');
         // $this->router->map('GET', '/admin/communities/create', ['AdminController', ''], '');
@@ -45,8 +48,9 @@ class Application {
         $this->router->map('GET', '/logout', ['MemberController', 'logout'], 'logout');
         // $this->router->map('GET', '/forgot_password', ['MemberController', ''], '');
         // $this->router->map('GET', '/update_password', ['MemberController', ''], '');
+
         // Compte utilisateur
-        // $this->router->map('GET', '/profile', ['Controller', ''], '');
+        $this->router->map('GET', '/profile', ['MemberController', 'me'], 'profile');
         // $this->router->map('GET', '/profile/update', ['Controller', ''], '');
     }
 
