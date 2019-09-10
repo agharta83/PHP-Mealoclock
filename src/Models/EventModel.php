@@ -1,7 +1,9 @@
 <?php
 namespace MealOclock\Models;
 
-class EventModel {
+class EventModel extends CoreModel {
+
+    protected static $tableName = 'events';
 
     private $id;
     private $name;
@@ -10,6 +12,32 @@ class EventModel {
     private $event_limit;
     private $creator_id;
     private $community_id;
+
+    /* // Retourne la liste compléte des événements
+    public static function findAll() {
+        // On construit la requete SQL
+        $sql = 'SELECT * FROM events';
+        // On récupére la connexion à la BDD
+        $conn = \MealOclock\Database::getDb();
+        // On execute la requete
+        $stmt = $conn->query($sql);
+        // On récupére les résultats
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
+    } */
+
+    // Retourne un seul événement à partir de son ID
+    public static function find( $id ) {
+        // On construit la requ$ete SQL
+        $sql = 'SELECT * FROM events WHERE id = :id';
+        // On récupére la connexion à la BDD
+        $conn = \MealOclock\Database::getDb();
+        // On execute la requete
+        $stmt = $conn->query($sql);
+        $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
+        $stmt->execute();
+        // On récupére le résultat
+        return $stmt->fetchObject( self::class );
+    }
 
 
     /**

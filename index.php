@@ -1,4 +1,7 @@
 <?php
+
+error_reporting(E_ALL);
+
 // Chargement des fichiers de façon dynamique
 require(__DIR__ . '/vendor/autoload.php');
 

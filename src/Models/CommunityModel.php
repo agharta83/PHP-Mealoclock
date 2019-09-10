@@ -1,14 +1,18 @@
 <?php
 namespace MealOclock\Models;
 
-class CommunityModel {
+class CommunityModel extends CoreModel {
+
+    protected static $tableName = 'communities';
 
     private $id;
     private $name;
     private $description;
+    private $picture;
+    private $slug;
     private $creator_id;
 
-    // Retourne la liste de toute les communautés
+    /* // Retourne la liste de toute les communautés
     public static function findAll() {
         // On construit la requête SQL
         $sql = 'SELECT * FROM communities';
@@ -19,6 +23,20 @@ class CommunityModel {
         // On retourne les résultats
         $result = $stmt->fetchAll(\PDO::FETCH_CLASS, self::class);
         return $result;
+    } */
+
+    // Retourne une communauté à partir de son "slug"
+    public static function findBySlug( $slug ) {
+        // On créé la requete SQL
+        $sql = 'SELECT * FROM communities WHERE slug = :slug';
+        // On récupére la connexion à la BDD
+        $conn = \MealOclock\Database::getDb();
+        // On execute la requete
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue( ':slug', $slug, \PDO::PARAM_STR);
+        $stmt->execute();
+        // On retourne le resultat
+        return $stmt->fetchObjet( self::class );
     }
 
     /**
@@ -85,6 +103,46 @@ class CommunityModel {
     public function setCreatorId($creator_id)
     {
         $this->creator_id = $creator_id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of picture
+     */ 
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Set the value of picture
+     *
+     * @return  self
+     */ 
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of slug
+     */ 
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set the value of slug
+     *
+     * @return  self
+     */ 
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
 
         return $this;
     }

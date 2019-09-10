@@ -20,7 +20,7 @@ class Application {
         $this->router->map('GET', '/pages/mentions', ['mainController', 'mentions'], 'mentions');
 
         // Communautés
-        //$this->router->map('GET', '/communities/[a:slug]', ['CommunityController', 'read'], 'community_read');
+        $this->router->map('GET', '/communities/[:slug]', ['CommunityController', 'read'], 'community_read');
 
         // Evènements
         $this->router->map('GET', '/events', ['EventController', 'list'], 'event_list');

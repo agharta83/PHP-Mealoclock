@@ -11,9 +11,9 @@
 <!-- Liste des évènements -->
 <div class="container-fluid">
 
-    <?php for ($i=0; $i<5; $i++): ?>
-        <?php $this->insert( 'partials/event', [ 'cpt' => $i ] ) ?>
-    <?php endfor; ?>
+    <?php foreach ($events as $event): ?>
+        <?php $this->insert( 'partials/event', [ 'event' => $event ] ) ?>
+    <?php endforeach; ?>
 
 </div>
 </p>
