@@ -14,7 +14,7 @@ class EventModel extends CoreModel {
     private $community_id;
 
     // Crée un nouvel évènement ou le met à jour si il existe déjà
-    public static function save() {
+    public function save() {
         // On crée la requête SQL
         $sql = "
             REPLACE INTO events (
@@ -25,7 +25,8 @@ class EventModel extends CoreModel {
                 event_limit,
                 creator_id,
                 community_id
-            ) VALUES (
+            )
+            VALUES (
                 :id,
                 :name,
                 :event_date,
@@ -33,7 +34,7 @@ class EventModel extends CoreModel {
                 :event_limit,
                 :creator_id,
                 :community_id
-        )";
+            )";
 
         // On récupére le connexion à la BDD
         $conn = \MealOclock\Database::getDb();
@@ -50,6 +51,21 @@ class EventModel extends CoreModel {
 
         // On récupére l'ID qui vient d'être généré par MySQL
         $this->id = $conn->lastInsertId();
+    }
+
+    // Retourne les évènements comportant la recherche dans leur nom
+    public static function findByName( $search, $className=self::class ) {
+        // On crée la requête SQL
+        $sql = 'SELECT * FROM events WHERE name LIKE :search';
+        // On récupère la connexion à la BDD
+        $conn = \MealOclock\Database::getDb();
+        // On exécute la requête
+        $stmt = $conn->prepare( $sql );
+        $stmt->bindValue(':search', '%'.$search.'%', \PDO::PARAM_STR);
+        $stmt->execute();
+        //var_dump($stmt);
+        // On récupère les résultats
+        return $stmt->fetchAll( \PDO::FETCH_CLASS, $className );
     }
 
     /* // Retourne la liste compléte des événements

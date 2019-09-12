@@ -11,7 +11,7 @@ body {
     font-family: 'Miriam Libre';
   }
   
-/* MENUS */
+/* MENU */
 .title {
   background: linear-gradient(to right, #A61B0F, #F2BB13);
 }
@@ -33,6 +33,18 @@ body > header > div > a {
 
 .menu .search-form input:focus {
   box-shadow: 0 0 0 0.2rem rgba(166, 27, 15, .25);
+}
+
+.menu .search-results {
+  position: absolute;
+  display: none;
+  width: 223px;
+  top: 117px;
+}
+
+.search-results li:hover {
+  cursor: pointer;
+  background-color: #efefef;
 }
 
 .btn {

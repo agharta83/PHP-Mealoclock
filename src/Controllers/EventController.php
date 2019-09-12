@@ -26,12 +26,13 @@ class EventController extends CoreController {
             // On a reçu les informatins de création d'un événement, on le créé
             //var_dump($_POST);
             $event = new \MealOclock\Models\EventModel();
-            $event->setName( $_POST['name']);
-            $event->setEventDate( $_POST['event_date']);
-            $event->setAddress( $_POST['address']);
-            $event->setEventLimit( $_POST['event_limit']);
+            $event->setName( $_POST['name'] );
+            $event->setEventDate( $_POST['event_date'] );
+            $event->setAddress( $_POST['address'] );
+            $event->setEventLimit( $_POST['event_limit'] );
             $event->setCreatorId( 1 );
             $event->setCommunityId( 1 );
+            //var_dump($event->save()); die();
             $event->save();
 
             // L'événement est correctement créé, on redirige l'utilisateur sur la page de l'évènement
@@ -41,5 +42,16 @@ class EventController extends CoreController {
             // Aucune information dans $_POST, on affiche le template
             echo $this->templates->render ('event/create');
         }
+    }
+
+    // Permet de rechercher des évènements par leur nom
+    public function search() {
+        // On récupère la recherche
+        $search = $_POST['search'];
+        // On récupère les résultats de la recherche
+        $list = \MealOclock\Models\EventModel::findByName( $search, '\stdClass' );
+        //var_dump($list);
+        // On répond à la requête AJAX
+        echo json_encode( $list );
     }
 }

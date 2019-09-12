@@ -26,6 +26,7 @@ class Application {
         $this->router->map('GET', '/events', ['EventController', 'list'], 'event_list');
         $this->router->map('GET', '/events/[i:id]', ['EventController', 'read'], 'event_read');
         $this->router->map('GET|POST', '/events/create', ['EventController', 'create'], 'event_create');
+        $this->router->map('POST', '/events/search', ['EventController', 'search'], 'event_search');
         //$this->router->map('GET', '/[admin|profile:domain]events/[i:id]/update', ['EventController', 'update'], 'event_update');
 
         // Membres

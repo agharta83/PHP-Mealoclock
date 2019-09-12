@@ -12,10 +12,20 @@
 
             <div class="collapse navbar-collapse d-flex jus" id="navbarToggler">
 
-                <form action="" class="search-form form-inline p-2 mr-auto">
-                    <input type="search" placeholder="Search" class="search-input form-control ">
+                <div class="search-form form-inline p-2 mr-auto">
+                    <input type="text" placeholder="Search" class="search-input form-control" id="search">
                     <button class="search-submit btn" type="Search"><i class="fas fa-search"></i></button>
-                </form>
+                </div>
+
+                <!-- Liste de résultats -->
+                <div class="search-results">
+                    <ul class="list-group">
+                        <!--<li class="list-group-item">Event 1</li>
+                        <li class="list-group-item">Event 2</li>
+                        <li class="list-group-item">Event 3</li>-->
+                    </ul>
+                </div>
+
 
                 <ul class="navbar-nav justify-content-between">
                     <li class="nav-item px-5"><a href="<?=$router->generate('home')?>">Communautés</a></li>
