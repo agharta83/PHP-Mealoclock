@@ -30,7 +30,7 @@
                 <ul class="navbar-nav justify-content-between">
                     <li class="nav-item px-5"><a href="<?=$router->generate('admin')?>">Communautés</a></li>
                     <li class="nav-item px-5"><a href="<?=$router->generate('admin_events')?>">Evènements</a></li>
-                    <li class="nav-item px-5"><a href="<?=$router->generate('admin')?>">Membres</a></li>
+                    <li class="nav-item px-5"><a href="<?=$router->generate('admin_members')?>">Membres</a></li>
                 </ul>
 
                 <ul  class="navbar-nav ml-auto">

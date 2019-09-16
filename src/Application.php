@@ -40,9 +40,9 @@ class Application {
         $this->router->map('GET', '/admin/communities/[i:id]/delete', ['Admin\CommunityController', 'delete'], 'admin_community_delete');
         $this->router->map('GET', '/admin/events', ['Admin\EventController', 'list'], 'admin_events');
         $this->router->map('GET', '/admin/events/[i:id]/delete', ['Admin\EventController', 'delete'], 'admin_event_delete');
-        // $this->router->map('GET', '/admin/members', ['AdminController', ''], '');
+        $this->router->map('GET', '/admin/members', ['Admin\MemberController', 'list'], 'admin_members');
         // $this->router->map('GET', '/admin/members/update/status', ['AdminController', ''], '');
-        // $this->router->map('GET', '/admin/members/[i:id]/delete', ['AdminController', ''], '');
+        $this->router->map('GET', '/admin/members/[i:id]/delete', ['Admin\MemberController', 'delete'], 'admin_member_delete');
         // $this->router->map('GET', '/admin/members/update/role', ['AdminController', ''], '');
 
         // Connexion / inscription

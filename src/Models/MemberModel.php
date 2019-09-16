@@ -5,15 +5,15 @@ class MemberModel extends CoreModel {
 
     protected static $tableName = 'members';
     
-    private $id;
-    private $email;
-    private $password;
-    private $firstname;
-    private $lastname;
-    private $photo;
-    private $address;
-    private $description;
-    private $is_admin;
+    protected $id;
+    protected $email;
+    protected $password;
+    protected $firstname;
+    protected $lastname;
+    protected $photo;
+    protected $address;
+    protected $description;
+    protected $is_admin;
 
     // Vérification des données de création de compte, liste les erreurs détectées
     public static function checkData ($data) {
