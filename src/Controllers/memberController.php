@@ -22,8 +22,10 @@ class MemberController extends CoreController {
                 // Pas d'erreur, on peut continuer la création de compte
                 $member = \MealOclock\Models\MemberModel::signup($_POST);
                 // On redirige l'utilisateur sur le formulaire de connexion
-                $this->redirect('login');
+                //$this->redirect('login');
             }
+            echo json_encode($errors);
+            return;
         }
 
         // On affiche le formulaire
@@ -58,8 +60,17 @@ class MemberController extends CoreController {
                     // C'est le bon mot de passe, on identifie l'utilisateur, on identifie l'utilisateur
                     \MealOclock\Models\MemberModel::login($member);
                     // On redirige l'utilisateur
-                    $this->redirect('home');
+                    //$this->redirect('home');
                 }
+            }
+
+            if($this->isAjax()) {
+                // C'est bien de l'AJAX, on retourne les erreurs
+                echo json_encore($errors);
+                exit();
+            } else {
+                // C'est une requete normale
+                if (count($errors) === 0) $this->redirect('home');
             }
         }
 
@@ -105,5 +116,11 @@ class MemberController extends CoreController {
 
         // On redirige l'utilisateur
         $this->redirect('home');
+    }
+
+    // Indique si la requête a été faite en AJAX ou pas
+    private function isAjax() {
+        return isset($_SERVER['HTTP_X_REQUESTED_WITH'])
+            && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
     }
 } 
