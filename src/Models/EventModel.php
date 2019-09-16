@@ -5,13 +5,13 @@ class EventModel extends CoreModel {
 
     protected static $tableName = 'events';
 
-    private $id;
-    private $name;
-    private $event_date;
-    private $address;
-    private $event_limit;
-    private $creator_id;
-    private $community_id;
+    protected $id;
+    protected $name;
+    protected $event_date;
+    protected $address;
+    protected $event_limit;
+    protected $creator_id;
+    protected $community_id;
 
     // Crée un nouvel évènement ou le met à jour si il existe déjà
     public function save() {

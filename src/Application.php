@@ -38,7 +38,8 @@ class Application {
         // $this->router->map('GET', '/admin/communities/create', ['AdminController', ''], '');
         // $this->router->map('GET', '/admin/communities/[i:id]/update', ['AdminController', ''], '');
         $this->router->map('GET', '/admin/communities/[i:id]/delete', ['Admin\CommunityController', 'delete'], 'admin_community_delete');
-        // $this->router->map('GET', '/admin/events', ['AdminController', ''], '');
+        $this->router->map('GET', '/admin/events', ['Admin\EventController', 'list'], 'admin_events');
+        $this->router->map('GET', '/admin/events/[i:id]/delete', ['Admin\EventController', 'delete'], 'admin_event_delete');
         // $this->router->map('GET', '/admin/members', ['AdminController', ''], '');
         // $this->router->map('GET', '/admin/members/update/status', ['AdminController', ''], '');
         // $this->router->map('GET', '/admin/members/[i:id]/delete', ['AdminController', ''], '');
