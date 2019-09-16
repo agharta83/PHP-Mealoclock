@@ -28,14 +28,9 @@
 
 
                 <ul class="navbar-nav justify-content-between">
-                    <li class="nav-item px-5"><a href="<?=$router->generate('home')?>">Communautés</a></li>
-                    <li class="nav-item px-5"><a href="<?=$router->generate('event_list')?>">Evènements</a></li>
-                    <li class="nav-item px-5"><a href="<?=$router->generate('member_list')?>">Membres</a></li>
-                    <?php if ( $user && $user['is_admin'] ): ?>
-                        <li class="nav-item px-5">
-                            <a href="<?=$router->generate('admin')?>">Admin</a>
-                        </li>
-                    <?php endif; ?>
+                    <li class="nav-item px-5"><a href="<?=$router->generate('admin')?>">Communautés</a></li>
+                    <li class="nav-item px-5"><a href="<?=$router->generate('admin')?>">Evènements</a></li>
+                    <li class="nav-item px-5"><a href="<?=$router->generate('admin')?>">Membres</a></li>
                 </ul>
 
                 <ul  class="navbar-nav ml-auto">

@@ -11,11 +11,19 @@
     <link rel="stylesheet" href="<?=$basePath?>/public/css/style.css">
   </head>
   <body>
+
+    <header>
+
+      <?php $this->insert('partials/nav_admin') ?>
+
+    </header>
+
     <main class="container py-3">
       
       <?=$this->section('content')?>
 
     </main>
+    
     <footer>
         Copyright &copy; Oclock 2018
     </footer>

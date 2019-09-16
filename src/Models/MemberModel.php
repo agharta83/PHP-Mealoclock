@@ -131,7 +131,8 @@ class MemberModel extends CoreModel {
             'id' => $member->getId(),
             'email' => $member->getEmail(),
             'firstname' => $member->getFirstname(),
-            'photo' => $member->getPhoto()
+            'photo' => $member->getPhoto(),
+            'is_admin' => $member->getIs_admin()
         ];
     }
 
