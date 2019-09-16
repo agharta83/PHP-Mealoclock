@@ -5,12 +5,12 @@ class CommunityModel extends CoreModel {
 
     protected static $tableName = 'communities';
 
-    private $id;
-    private $name;
-    private $description;
-    private $picture;
-    private $slug;
-    private $creator_id;
+    protected $id;
+    protected $name;
+    protected $description;
+    protected $picture;
+    protected $slug;
+    protected $creator_id;
 
     /* // Retourne la liste de toute les communautés
     public static function findAll() {

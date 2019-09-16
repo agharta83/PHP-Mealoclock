@@ -9,6 +9,9 @@ class CoreController {
 
         // On enregistre le routeur dans le controller
         $this->router = $router;
+
+        // On enregistre les informations de l'utilisateur connecté
+        $this->currentUser = \MealOclock\Models\MemberModel::getUser();
         
         // Instance de la librairie Plates pour gérer les templates
         $this->templates = new \League\Plates\Engine( __DIR__ . '/../Views' );
@@ -17,7 +20,7 @@ class CoreController {
         $this->templates->addData([
             'basePath' => $_SERVER['BASE_URI'] ?? '',
             'router' => $this->router,
-            'user' => \MealOclock\Models\MemberModel::getUser()
+            'user' => $this->currentUser
         ]);
     }
 

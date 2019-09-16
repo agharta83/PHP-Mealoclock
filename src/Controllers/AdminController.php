@@ -2,7 +2,7 @@
 
 namespace MealOclock\Controllers;
 
-class AdminController extends CoreController {
+class AdminController extends Admin\CoreController {
     
     // Page d'accueil de l'interface d'admin
     public function home() {

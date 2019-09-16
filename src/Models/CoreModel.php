@@ -31,4 +31,16 @@ class CoreModel {
         // On retourne les résultats
         return $stmt->fetchObject( static::class );
     }
+
+    // Supression d'un enregistrement à partir de son ID
+    public function delete() {
+        // On construit la requête SQL
+        $sql = 'DELETE FROM ' . static::$tableName . ' WHERE id = :id';
+        // On récupère la connexion à la BDD
+        $conn = \MealOclock\Database::getDb();
+        // On exécute la requête
+        $stmt = $conn->prepare( $sql );
+        $stmt->bindValue(':id', $this->id, \PDO::PARAM_INT);
+        return $stmt->execute();
+    }
 }

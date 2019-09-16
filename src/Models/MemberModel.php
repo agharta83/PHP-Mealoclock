@@ -132,7 +132,7 @@ class MemberModel extends CoreModel {
             'email' => $member->getEmail(),
             'firstname' => $member->getFirstname(),
             'photo' => $member->getPhoto(),
-            'is_admin' => $member->getIs_admin()
+            'is_admin' => (bool) $member->getIs_admin()
         ];
     }
 
